@@ -46,37 +46,37 @@ class CalcApp(QWidget):
         master_layout.addLayout(button_row)
         self.setLayout(master_layout)
 
-        self.clear.clicked.connect(button_click)
-        self.delete.clicked.connect(button_click)
+        self.clear.clicked.connect(self.button_click)
+        self.delete.clicked.connect(self.button_click)
 
-        def button_click(self):
-            button = app.sender()
-            text = button.text()
+    def button_click(self):
+        button = app.sender()
+        text = button.text()
 
-            if text == "=":
-                symbol = self.text_box.text()
-                try:
-                    res = eval(symbol)
-                    self.text_box.setText(str(res))
+        if text == "=":
+            symbol = self.text_box.text()
+            try:
+                res = eval(symbol)
+                self.text_box.setText(str(res))
 
-                except Exception as e:
-                    print("Error: ", e)
+            except Exception as e:
+                print("Error: ", e)
 
-            elif text == "Clear":
-                self.text_box.clear()
+        elif text == "Clear":
+            self.text_box.clear()
 
-            elif text == "<Del":
-                current_value = self.text_box.text()
-                self.text_box.setText(current_value[:-1])
+        elif text == "<Del":
+            current_value = self.text_box.text()
+            self.text_box.setText(current_value[:-1])
 
-            else:
-                current_value = self.text_box.text()
-                self.text_box.setText(current_value + text)
+        else:
+            current_value = self.text_box.text()
+            self.text_box.setText(current_value + text)
 
         
-
-# Show/Run
-app = QApplication([])
-main_window = QWidget()
-main_window.show()
-app.exec_()
+if __name__ in "__main__":
+    # Show/Run
+    app = QApplication([])
+    main_window = CalcApp()
+    main_window.show()
+    app.exec_()
