@@ -44,8 +44,7 @@ class CalcApp(QWidget):
         button_row.addWidget(self.delete)
 
         master_layout.addLayout(button_row)
-
-        main_window.setLayout(master_layout)
+        self.setLayout(master_layout)
 
         self.clear.clicked.connect(button_click)
         self.delete.clicked.connect(button_click)
